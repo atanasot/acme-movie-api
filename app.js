@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const {models: {Movie}} = require('./db')
 
 
 app.get('/', (req, res, next) => {
@@ -16,7 +17,13 @@ app.get('/', (req, res, next) => {
     }
 })
 
-
+app.get('/api/movies', async(req, res, next) => {
+    try {
+        res.send(await Movie.findAll())
+    } catch (err) {
+        next(err)
+    }
+})
 
 
 
