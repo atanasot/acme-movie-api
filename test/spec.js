@@ -27,4 +27,11 @@ describe('Routes', ()=> {
             expect(response.body.length).to.equal(4)
         })
     })
+    describe('GET /api/actors', ()=> {
+        it('returns actors', async()=> {
+            const response = await app.get('/api/actors')
+            expect(response.status).to.equal(200)
+            expect(response.body.length).to.equal(5)
+        })
+    })
 })
