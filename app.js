@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 const {models: {Movie, Actor}} = require('./db')
 const path = require('path')
+const cors = require('cors') //cors allows us to make an api call to our site from another site
 
 //app.get('/', (req, res)) // get the html file here
+
+app.use(cors())
 
 app.get('/', (req, res, next) => {
     try {

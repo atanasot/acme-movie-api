@@ -40,6 +40,12 @@ describe('Routes', ()=> {
             expect(response.status).to.equal(200)
             expect(response.body.length).to.equal(4) // we get response.body from supertest
         })
+        it('allows cross origin requests', async()=> {
+            const response = await app.get('/api/movies')
+            expect(response.headers['access-control-allow-origin']).to.be.ok
+            expect(response.headers['access-control-allow-origin']).to.equal('*')
+            //console.log(response.headers)
+        })
     })
     describe('GET /api/actors', ()=> {
         it('returns actors', async()=> {
