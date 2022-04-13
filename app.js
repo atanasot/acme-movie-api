@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const {models: {Movie, Actor}} = require('./db')
+const path = require('path')
 
+//app.get('/', (req, res)) // get the html file here
 
 app.get('/', (req, res, next) => {
     try {

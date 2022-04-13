@@ -1,7 +1,21 @@
-const {expect} = require('chai')
+const {expect} = require('chai') // chai is the expectation library, mocha is the testing 
 const {syncAndSeed} = require('../db')
 
-const app = require('supertest')(require('../app')) // what is supertest -- it tests express API
+// any call to the server is async
+const app = require('supertest')(require('../app')) // what is supertest -- it tests express API // interrogates responses from express
+
+describe('a test', ()=> {
+    it('can be passed', () => {
+    })
+})
+
+// describe('The Home Page', ()=> {
+//     it('exists', async()=> {
+//         const response = await app.get('/')
+//         expect(response.status).to.equal(200)
+//         expect(response.text).to.contain('The Acme')
+//     })
+// })
 
 describe('the sky', () => {
     describe('the sky is blue', ()=> {
@@ -24,7 +38,7 @@ describe('Routes', ()=> {
         it('returns movies', async()=> {
             const response = await app.get('/api/movies')
             expect(response.status).to.equal(200)
-            expect(response.body.length).to.equal(4)
+            expect(response.body.length).to.equal(4) // we get response.body from supertest
         })
     })
     describe('GET /api/actors', ()=> {
